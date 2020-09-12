@@ -1,0 +1,124 @@
+//PARAMETERS:
+//FONT
+$font: sans-serif;
+$big_font_size: 16px;
+$medium_font_size: 14px;
+$small_font_size: 12px;
+//COLORS
+$font_color: #ff0000;
+$background_color: #ffe6e6;
+$line_color: #ff0000;
+//SPACE
+$margin: 10px;
+$padding: 10px;
+$left_space: 20px;
+$border_radius: 5px;
+
+////////////////////////////////////////////
+
+//MAIN
+main {
+  font: $font;
+  font-size: $big_font_size;
+  color: $font_color;
+}
+
+//DIV
+div {
+  display: flex;
+  flex-flow: column;
+  margin: $margin;
+}
+
+//BUTTON
+input[type="button"] {
+  width: 50px;
+  height: 40px;
+  border: solid $line_color 1px;
+  border-radius: $border_radius;
+  background-color: $background_color;
+  color: $font_color;
+  font-size: $medium_font_size;
+}
+
+//INPUT TEXT
+input[type="text"] {
+  display: block;
+  border: solid $line_color 1px;
+  border-radius: $border_radius;
+  font-size: $big_font_size;
+  padding: $padding;
+}
+
+//CHECKBOX
+input[type="checkbox"] {
+  vertical-align: middle;
+}
+
+label {
+  border: solid 1px;
+  float: left;
+  clear: right;
+}
+
+//HORIZONTAL RULE
+hr {
+  height: 1px;
+  border: 0px;
+  background-color: $line_color;
+}
+
+//PLACEHOLDER
+::placeholder {
+  color: $font_color;
+  opacity: 0.2;
+}
+
+//FOCUS
+*:focus {
+  outline: solid 1px;
+}
+
+////////////////////////////////////////////
+
+//PAGE HEADER
+.header_page {
+  font: $font;
+  color: $font_color;
+  padding: $padding;
+}
+
+//MAIN WINDOW
+.window_main {
+}
+
+//INSERT WINDOW
+.window_insert {
+  border: solid black 1px;
+  background-color: burlywood;
+}
+
+//TEXT INSERT
+#text_insert {
+  width: 330px;
+}
+
+//BUTTON INSERT
+#btn_insert {
+}
+
+//TO DO LIST WINDOW
+.window_to_do {
+  border: solid 1px;
+  background-color: coral;
+}
+
+//DIVISION LINE TO DO AND COMPLETED
+.separation_line {
+}
+
+//COMPLETED ITEMS WINDOW
+.window_completed {
+  border: solid 1px;
+  background-color: chartreuse;
+}
