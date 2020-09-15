@@ -20,21 +20,29 @@
     <main>
       <h1 class="header_page">To do list</h1>
       <div class="window_main">
+
         <div class="window_insert">
-          <input
+            <input
             type="text"
             name="text_insert"
             id="text_insert"
             placeholder="To do"
             autofocus
-          />
-          <input
+            />
+            <input
             type="button"
             name="btn_insert"
             id="btn_insert"
             value="Insert"
             onclick="insertToDo()"
-          />
+            />
+            <input
+            type="button"
+            name="btn_clear_completed"
+            id="btn_clear_completed"
+            value="Clear Completed"
+            onclick="clearCompleted()"
+            />
         </div>
 
         <div class="window_to_do">
@@ -44,13 +52,9 @@
         <hr class="separation_line" />
 
         <div class="window_completed">
-          <ul>
-            <li>
-              <input type="checkbox" name="second" id="second" />
-              <label for="second">Debulhar milho</label>
-            </li>
-          </ul>
+          <ul class="completed_list"></ul>
         </div>
+        
       </div>
     </main>
   </body>
