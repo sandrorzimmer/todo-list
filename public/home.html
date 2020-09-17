@@ -45,6 +45,32 @@
             />
         </div>
 
+        <div class="window_edit_item">
+            <input
+            type="text"
+            name="edit_item"
+            id="edit_item"
+            placeholder="Edit item"
+            />
+            <input
+            type="hidden"
+            name="item_index"
+            id="item_index"
+            />
+            <input
+            type="hidden"
+            name="list_type"
+            id="list_type"
+            />
+            <input
+            type="button"
+            name="btn_edit_item"
+            id="btn_edit_item"
+            value="OK"
+            onclick="confirmEditItem()"
+            />
+        </div>
+
         <div class="window_to_do">
           <ul class="to_do_list"></ul>
         </div>

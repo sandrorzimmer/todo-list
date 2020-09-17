@@ -50,7 +50,8 @@ function showLists() {
     $.each(to_do_list, function (i, value) {
         element_todo += "<li>";
         element_todo += "<input id='" + i + "' type='checkbox' onchange='completeItem(" + i + ")'/>";
-        element_todo += "<label for='" + i + "'>" + value + "</label>";
+        //element_todo += "<label for='" + i + "'>" + value + "</label>";
+        element_todo += "<span onclick='editItem(" + i + ",0)'>" + value + "</span>";
         element_todo += "<li>";
     });
     $(".to_do_list").html(element_todo);
@@ -59,10 +60,11 @@ function showLists() {
     $.each(completed_list, function (i, value) {
         element_completed += "<li>";
         element_completed += "<input id='" + i + "' type='checkbox' onchange='undoItem(" + i + ")'/>";
-        element_completed += "<label for='" + i + "'>" + value + "</label>";
+        element_completed += "<span onclick='editItem(" + i + ",1)'>" + value + "</span>";
         element_completed += "<li>";
     });
     $(".completed_list").html(element_completed);
+    return;
 }
 
 //Insere novo item na lista to do
@@ -84,6 +86,7 @@ function insertToDo() {
 
     //Limpa campo de inserção de novo item
     $("#text_insert").val("");
+    return;
 }
 
 function completeItem(item) {
@@ -138,6 +141,53 @@ function clearCompleted() {
     saveCompletedlist(init_localstorage);
 
     showLists();
+
+    return;
+}
+
+function editItem(item,list_type) {
+    //list = 0 --> to do list item
+    //list = 1 --> completed list item
+
+    let list = [];
+    let item_text = "";
+
+    if (list_type == 0) {
+        list = getTodolist();
+    } else {
+        list = getCompletedlist();
+    }
+    item_text = list[item];
+    $("#edit_item").val(item_text);
+    $("#item_index").val(item);
+    $("#list_type").val(list_type);
+
+    return;
+}
+
+function confirmEditItem() {
+    let list_type = null;
+    let item_index = null;
+    let item_text = "";
+    let list = [];
+    
+    list_type = $("#list_type").val();
+    item_index = $("#item_index").val();
+    item_text = $("#edit_item").val();
+
+    if (list_type == 0) {
+        list = getTodolist();
+        list[item_index] = item_text;
+        saveTodolist(list);
+    } else {
+        list = getCompletedlist();
+        list[item_index] = item_text;
+        saveCompletedlist(list);
+    }
+    showLists();
+    $("#edit_item").val("");
+
+    return;
 }
 
 //Executar ao carregar a página
