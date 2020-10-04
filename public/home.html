@@ -7,10 +7,9 @@
     <meta name="description" content="To do list" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="_css/styles.css" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Cabin&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="icon" type="image/png" sizes="32x32" href="_image/favicon-32x32.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="_script/script.js"></script>
@@ -26,26 +25,9 @@
             type="text"
             name="text_insert"
             id="text_insert"
-            placeholder="To do"
+            placeholder="New item"
             autofocus
             />
-            <input
-            type="button"
-            name="btn_insert"
-            id="btn_insert"
-            value="Insert"
-            onclick="insertToDo()"
-            />
-            <input
-            type="button"
-            name="btn_clear_completed"
-            id="btn_clear_completed"
-            value="Clear Completed"
-            onclick="clearCompleted()"
-            />
-        </div>
-
-        <div class="window_edit_item">
             <input
             type="text"
             name="edit_item"
@@ -64,10 +46,10 @@
             />
             <input
             type="button"
-            name="btn_edit_item"
-            id="btn_edit_item"
-            value="OK"
-            onclick="confirmEditItem()"
+            name="btn_clear_completed"
+            id="btn_clear_completed"
+            value="Clear done"
+            onclick="clearCompleted()"
             />
         </div>
 
@@ -77,10 +59,12 @@
 
         <hr class="separation_line" />
 
+        <i class="material-icons" id="btn_show_completed" onclick="showCompleted()">keyboard_arrow_down</i>
+        <i class="material-icons" id="btn_hide_completed" onclick="hideCompleted()">keyboard_arrow_up</i>
+
         <div class="window_completed">
-          <ul class="completed_list"></ul>
+            <ul class="completed_list"></ul>
         </div>
-        
       </div>
     </main>
   </body>

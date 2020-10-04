@@ -48,20 +48,24 @@ function showLists() {
 
     //Monta a lista to do com os dados buscados
     $.each(to_do_list, function (i, value) {
+        element_todo += "<div class='div_to_do_item'>";
         element_todo += "<li>";
         element_todo += "<input id='" + i + "' type='checkbox' onchange='completeItem(" + i + ")'/>";
         //element_todo += "<label for='" + i + "'>" + value + "</label>";
         element_todo += "<span onclick='editItem(" + i + ",0)'>" + value + "</span>";
         element_todo += "<li>";
+        element_todo += "</div>";
     });
     $(".to_do_list").html(element_todo);
 
     //Monta a lista completed com os dados buscados
     $.each(completed_list, function (i, value) {
+        element_completed += "<div class='div_completed_item'>";
         element_completed += "<li>";
-        element_completed += "<input id='" + i + "' type='checkbox' onchange='undoItem(" + i + ")'/>";
+        element_completed += "<input id='" + i + "' type='checkbox' checked onchange='undoItem(" + i + ")'/>";
         element_completed += "<span onclick='editItem(" + i + ",1)'>" + value + "</span>";
         element_completed += "<li>";
+        element_completed += "</div>";
     });
     $(".completed_list").html(element_completed);
     return;
@@ -69,12 +73,19 @@ function showLists() {
 
 //Insere novo item na lista to do
 function insertToDo() {
+
     let to_do_list = [];
     let to_do_item = "";
 
     to_do_list = getTodolist();    
 
     to_do_item = $("#text_insert").val();
+
+    if (to_do_item == "") {
+        clearAll();
+        return;
+    }
+
     to_do_list.push(to_do_item);
 
     saveTodolist(to_do_list);
@@ -86,6 +97,7 @@ function insertToDo() {
 
     //Limpa campo de inserção de novo item
     $("#text_insert").val("");
+    $("#text_insert").focus();
     return;
 }
 
@@ -108,6 +120,8 @@ function completeItem(item) {
     saveCompletedlist(completed_list);
 
     showLists();
+
+    $("#text_insert").focus();
 
     return;
 }
@@ -132,6 +146,8 @@ function undoItem(item){
 
     showLists();
 
+    $("#text_insert").focus();
+
     return;
 }
 
@@ -142,12 +158,19 @@ function clearCompleted() {
 
     showLists();
 
+    $("#text_insert").focus();
+
     return;
 }
 
 function editItem(item,list_type) {
     //list = 0 --> to do list item
     //list = 1 --> completed list item
+
+    $("#text_insert").hide(200);
+    $("#edit_item").show(200);
+
+    $("#edit_item").focus();
 
     let list = [];
     let item_text = "";
@@ -175,6 +198,11 @@ function confirmEditItem() {
     item_index = $("#item_index").val();
     item_text = $("#edit_item").val();
 
+    if (item_text == "") {
+        clearAll();
+        return;
+    }
+
     if (list_type == 0) {
         list = getTodolist();
         list[item_index] = item_text;
@@ -186,8 +214,32 @@ function confirmEditItem() {
     }
     showLists();
     $("#edit_item").val("");
-
+    $("#edit_item").hide(200);
+    $("#text_insert").show(200);
+    $("#text_insert").focus();
     return;
+}
+
+function clearAll() {
+    $("#text_insert").val("");
+    $("#edit_item").val("");
+    $("#item_index").val(null);
+    $("#list_type").val(null);
+    $("#edit_item").hide(200);
+    $("#text_insert").show(200);
+    $("#text_insert").focus();
+}
+
+function showCompleted() {
+    $(".window_completed").show(200);
+    $("#btn_show_completed").hide();
+    $("#btn_hide_completed").show();
+}
+
+function hideCompleted() {
+    $(".window_completed").hide(200);
+    $("#btn_hide_completed").hide();
+    $("#btn_show_completed").show();
 }
 
 //Executar ao carregar a página
@@ -206,4 +258,22 @@ $(document).ready(function(){
     } else {
         alert("Sorry, this browser does not support Web Storage.");
     }
+
+    $(document).keydown(function(e) {
+        if (e.which == 27) {
+            clearAll();
+        }
+    })
+
+    $('#text_insert').keydown(function(e) {
+        if (e.which == 13) {
+             insertToDo();
+        }
+    })
+
+    $('#edit_item').keydown(function(e) {
+        if (e.which == 13) {
+            confirmEditItem();
+        }
+    })
  });

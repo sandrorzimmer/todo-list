@@ -1,84 +1,123 @@
+body {
+    background-color: #d1e0e0;
+}
+
 main {
-  font: sans-serif;
-  font-size: 16px;
-  color: #ff0000;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #000000;
 }
 
 input[type="button"] {
-  width: 50px;
-  height: 40px;
-  margin: 5px;
-  border: solid #ff0000 1px;
-  border-radius: 5px;
-  background-color: #ffe6e6;
-  color: #ff0000;
-  font-size: 14px;
+    width: 50px;
+    margin: 5px;
+    padding: 10px;
+    border: solid #000000 0px;
+    border-radius: 30px;
+    color: #76a2a2;
+    font-size: 13px;
+}
+
+input:hover[type="button"] {
+    cursor: pointer;
 }
 
 input[type="text"] {
-  display: block;
-  margin: 5px;
-  border: solid #ff0000 1px;
-  border-radius: 5px;
-  font-size: 16px;
-  padding: 10px;
+    display: block;
+    margin: 5px;
+    padding: 10px;
+    border: solid #000000 0px;
+    border-radius: 10px;
+    font-size: 16px;
+    height: 20px;
+    width: 350px;
 }
 
 hr {
-  height: 1px;
-  border: 0px;
-  background-color: #ff0000;
+    height: 1px;
+    border: 0px;
+    background-color: #76a2a2;
 }
 
 ul,
 li {
-  list-style: none;
-  margin: 10px;
-  padding: 0;
+    list-style: none;
+    margin: 10px;
+    padding: 0;
+}
+
+i {
+    color: #76a2a2;
+}
+
+i:hover {
+    cursor: pointer;
+}
+
+span {
+    display: inline-block;
+    margin: 0 0 0 10px;
 }
 
 ::placeholder {
-  color: #ff0000;
-  opacity: 0.3;
+    color: #000000;
+    opacity: 0.3;
 }
 
 *:focus {
-  outline: solid 1px;
+    outline: 0px;
 }
 
 .header_page {
-  background-color: bisque;
-  font: sans-serif;
-  color: #ff0000;
-  padding: 10px;
+    font: sans-serif;
+    color: #000000;
+    padding: 0 10px;
 }
 
 .window_main {
-  border: solid bisque 1px;
-  padding: 5px;
-  background-color: bisque;
+    padding: 5px;
 }
 
 .window_insert {
-  display: flex;
-}
-
-#text_insert {
-  width: 330px;
-}
-
-#btn_insert {
-  left: 360px;
+    display: flex;
 }
 
 .window_to_do {
-  flex-flow: column;
-}
-
-.separation_line {
+    flex-flow: column;
 }
 
 .window_completed {
-  text-decoration: line-through;
-  opacity: 0.4;
+    display: none;
+}
+
+.div_to_do_item, .div_completed_item {
+    width: 450px;;
+    border: solid 1px #ffffff;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin: 10px 0;
+}
+
+.div_completed_item {
+    opacity: 0.4;
+}
+
+#btn_hide_completed {
+    display: none;
+}
+
+#btn_clear_completed {
+    width: 90px;
+    padding: 1px;
+    font-size: 11px;
+    background-color: inherit;
+}
+
+#btn_clear_completed:hover {
+    font-weight: bold;
+}
+
+#edit_item {
+    display: none;
 }
